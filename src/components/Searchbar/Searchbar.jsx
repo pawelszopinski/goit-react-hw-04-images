@@ -1,23 +1,32 @@
-import React from 'react';
-import './Searchbar.css'
-function SearchBar() {
+import React, { useState } from 'react';
+import './Searchbar.css';
+const Searchbar = ({ onSearch }) => {
+  const [query, setQuery] = useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    onSearch(query);
+  };
+
   return (
     <header className="searchbar">
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <button type="submit" className="button">
-          <span className="button-label">Search</span>
+          <span className="button-label">Szukaj</span>
         </button>
 
         <input
           className="input"
           type="text"
-          autocomplete="off"
-          autofocus
-          placeholder="Search images and photos"
+          autoComplete="off"
+          autoFocus
+          placeholder="Wyszukaj obrazy i zdjęcia"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
         />
       </form>
     </header>
   );
-}
+};
 
-export default SearchBar;
+export default Searchbar;
