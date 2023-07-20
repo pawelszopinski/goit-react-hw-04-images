@@ -17,6 +17,7 @@ const Searchbar = ({ onSearch }) => {
 
         <input
           className="input"
+          pattern="^[A-Za-z.'\- ]+$"
           type="text"
           autoComplete="off"
           autoFocus
